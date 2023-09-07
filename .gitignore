@@ -1,2 +1,8 @@
 venv/
 Datacode/
+
+# Windows venv
+Lib/
+Scripts/
+pyvenv.cfg
+share/
