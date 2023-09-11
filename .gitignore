@@ -4,5 +4,6 @@ Datacode/
 # Windows venv
 Lib/
 Scripts/
+Include/
 pyvenv.cfg
 share/
