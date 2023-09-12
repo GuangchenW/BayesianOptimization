@@ -10,7 +10,6 @@ dragonfly-opt = "*"
 trieste = "*"
 matplotlib = "*"
 gpyopt = "*"
-gpy = {file = "GPy", editable = true}
 
 [dev-packages]
 
