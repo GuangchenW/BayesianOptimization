@@ -11,6 +11,7 @@ trieste = "*"
 matplotlib = "*"
 gpyopt = "*"
 gpy = {file = "GPy"}
+emukit = "*"
 
 [dev-packages]
 
