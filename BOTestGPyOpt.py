@@ -17,3 +17,5 @@ normalize_Y=False, evaluator_type='thompson_sampling',
 batch_size=2, maximize=True)
 
 x_next=BO.suggest_next_locations()
+
+print(x_next)
