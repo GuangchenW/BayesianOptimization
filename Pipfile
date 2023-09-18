@@ -12,6 +12,7 @@ gpyopt = "*"
 gpy = {file = "GPy"}
 emukit = "*"
 tensorflow-io-gcs-filesystem = "==0.31.0"
+matplotlib = "==3.3.4"
 
 [dev-packages]
 

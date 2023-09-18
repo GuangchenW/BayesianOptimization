@@ -17,21 +17,21 @@ import gpflow
 from trieste.models.gpflow import build_gpr, GaussianProcessRegression
 
 def build_model(data):
-	kern=gpflow.kernels.Matern52()
-	#gpr=gpflow.models.GPR(data=data.astuple(), kernel=kern, noise_variance=0.01)
-	#gpflow.set_trainable(gpr.likelihood, False)
+	variance = tf.math.reduce_variance(data.observations)
+	kern=gpflow.kernels.Matern52(variance=variance)
+	gpr = gpflow.models.GPR(data=data.astuple(), kernel=kern, noise_variance=0.01)
+	gpflow.set_trainable(gpr.likelihood, False)
 	#model_spec={
 	#	"model": gpr,
 	#	"optimizer": gpflow.optimizers.Scipy(),
 	#	"optimizer_args": {"minimize_args": {"options": dict(maxiter=1000)}},
 	#}
-	#return GPflowModelConfig(**model_spec)
-	return build_gpr(data=data, likelihood_variance=0.01, kernel=kern)
+	return GaussianProcessRegression(gpr)
 
 numpy.random.seed(0)
 tf.random.set_seed(0)
 #Model=create_model(build_model(ExpData))
-Model=GaussianProcessRegression(build_model(ExpData))
+Model=build_model(ExpData)
 
 from trieste.acquisition import BatchMonteCarloExpectedImprovement
 from trieste.acquisition.rule import EfficientGlobalOptimization
